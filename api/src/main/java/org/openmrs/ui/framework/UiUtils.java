@@ -681,6 +681,10 @@ public abstract class UiUtils {
 	 * @param clientTimezone The client timezone.
 	 */
 	public void setClientTimezone(String clientTimezone) {
+		String currentTimeZone=getClientTimezone();
+		if(StringUtils.equals(currentTimeZone,clientTimezone)){
+			return;
+		}
 		try {
 			Context.addProxyPrivilege(PrivilegeConstants.EDIT_USERS);
 			Context.getUserService().setUserProperty(Context.getAuthenticatedUser(),
